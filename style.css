@@ -42,7 +42,7 @@ header {
 }
 
 aside {
-    background-color:#9ccbe6;
+    background-color: pink;/*#9ccbe6;*/
     width:0vw;
     font-family:'Hepta Slab', Helvetica, Arial;
     transition:all ease .2s;
