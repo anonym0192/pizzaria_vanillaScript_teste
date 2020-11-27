@@ -8,7 +8,7 @@ let pizzaJson = [
     {id:7, name:'Chocolate', img:'images/pizza7.png', price:22.36, sizes:['320g', '530g', '860g'], description:'Descrição da pizza em mais de uma linha muito legal bem interessante'}
 ];
 
-let newJson = [
+let pizzaData = [
     {id:1, name:'Mussarela', img:'images/mussarela.png', price:{broto: 24.90, pequena: 35.90, media: 46.90, grande: 57.90}, 
     description:'Molho, mussarela, tomate em rodelas e orégano.'},
     

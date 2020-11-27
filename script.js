@@ -9,7 +9,7 @@ const sa = (el)=>document.querySelectorAll(el);
 //Pizza List generate 
 window.onload = function(){	
 
-	pizzaJson.map((i,k) => { 
+	pizzaData.map((i,k) => { 
 		const pizzaItem = s('.models .pizza-item').cloneNode(true);
 
 		pizzaItem.setAttribute('data-key', k);
@@ -17,14 +17,14 @@ window.onload = function(){
 		pizzaItem.querySelector('.pizza-item--img img').src = i.img;
 		pizzaItem.querySelector('.pizza-item--name').innerHTML = i.name;
 		pizzaItem.querySelector('.pizza-item--desc').innerHTML = i.description;
-		pizzaItem.querySelector('.pizza-item--price').innerHTML = "R$ "+i.price.toFixed(2);
+		pizzaItem.querySelector('.pizza-item--price').innerHTML = "R$ "+i.price.media.toFixed(2);
 
 		pizzaItem.querySelector('a').addEventListener('click', (e)=>{
 			e.preventDefault();
 
 			pizzaKey = e.target.closest('.pizza-item').getAttribute('data-key');
 
-			selectedPizza = pizzaJson[pizzaKey];
+			selectedPizza = pizzaData[pizzaKey];
 			pizzaQt = 1;
 			 
 
@@ -34,11 +34,12 @@ window.onload = function(){
 			modalWindow.querySelector('.pizzaInfo h1').innerHTML = selectedPizza.name;
 			modalWindow.querySelector('.pizzaInfo--desc').innerHTML = selectedPizza.description;
 			modalWindow.querySelector('.pizzaInfo--actualPrice').innerHTML = "R$ "+
-			selectedPizza.price.toFixed(2);
+			selectedPizza.price.broto;
 
-			modalWindow.querySelectorAll('.pizzaInfo--size').forEach( (size, indexSize) => {
+			
+			/*modalWindow.querySelectorAll('.pizzaInfo--size').forEach( (size, indexSize) => {
 				size.querySelector('span').innerHTML = selectedPizza.sizes[indexSize];
-			});
+			});*/
 
 			resetModalItems();
 			openModal();
@@ -58,16 +59,39 @@ window.onload = function(){
 function getPizzaSizeName(size){
 		switch(size){
 				case '0':
-					return 'P';
+					return 'B';
 					break;
 				case '1':
-					return 'M';
+					return 'P';
 					break;
 				case '2':
-					return 'G';
+					return 'M';
 					break;
+				case '3':
+					return 'G'
 			}
 }
+
+function getPizzaPrice(id, size){
+
+	const pizza = pizzaData.find(pizza=>pizza.id == id);
+
+	switch(size){
+				case '0':
+					return pizza.price.broto;
+					break;
+				case '1':
+					return pizza.price.pequena;
+					break;
+				case '2':
+					return pizza.price.media;
+					break;
+				case '3':
+					return pizza.price.grande;
+			}
+
+}
+
 
 //Modal Events
 s('.pizzaInfo--qtmenos').addEventListener('click', ()=>{
@@ -91,9 +115,10 @@ sa('.pizzaWindowArea .pizzaInfo--size').forEach((size)=>{
 
 s('.pizzaInfo--addButton').addEventListener('click', ()=>{
 	
-	const id = pizzaJson[pizzaKey].id;
+	const id = pizzaData[pizzaKey].id;
 	const size = s('.pizzaWindowArea .pizzaInfo--size.selected').getAttribute('data-key');
 	const identifier = id+'@'+size;
+	//alert(id);
 
 	const itemIndex = cart.findIndex((item)=>item.identifier === identifier);
 	if(itemIndex > -1){
@@ -167,13 +192,15 @@ function updateCart(){
 	s('.cart--area .cart').innerHTML = '';
 
 	//Append each cart-item in the cart area
-	for(i in cart){
+	for(let i in cart){
 
 		//Get the data of selected pizza from the list
-		const pizza = pizzaJson.find(pizza=>pizza.id === cart[i].id);
+		const pizza = pizzaData.find(pizza=>pizza.id === cart[i].id);
 
 		const cartItem = s('.cart--item').cloneNode(true);
-		subtotal = pizza.price * cart[i].qt;
+		const pizzaPrice = getPizzaPrice(cart[i].id, cart[i].size);
+
+		subtotal += pizzaPrice * cart[i].qt;
 
 		let pizzaSize = getPizzaSizeName(cart[i].size);
 		const pizzaDesc = `${pizza.name} (${pizzaSize})`; 
@@ -184,6 +211,7 @@ function updateCart(){
 
 		//Add event click
 		cartItem.querySelector('.cart--item-qtmenos').addEventListener('click', ()=>{
+
 			if(cart[i].qt > 1){
 				cart[i].qt--; 
 				cartItem.querySelector('.cart--item--qt').innerHTML = cart[i].qt;
@@ -193,10 +221,13 @@ function updateCart(){
 			updateCart();
 		});
 		cartItem.querySelector('.cart--item-qtmais').addEventListener('click', ()=>{
+			
 			cart[i].qt++; 
 			cartItem.querySelector('.cart--item--qt').innerHTML = cart[i].qt;
 			updateCart();		
 		});
+
+		;
 
 		s('.cart--area .cart').append(cartItem);
 	}
