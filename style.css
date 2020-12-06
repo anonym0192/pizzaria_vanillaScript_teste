@@ -1,25 +1,84 @@
+/*
+*
+* 
+* General Tags
+*
+*
+*/
+
 * {
     box-sizing: border-box;
 }
 body {
-    background-color:#EEE;
+    background-color:#fff8dc;
+    margin:0;
     font-family:'Lato',Helvetica,Arial;
     font-size:15px;
-    display:flex;
-    margin:0;
     min-height:100vh;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+    padding: 25px 10px;
+    background-image: url('images/banner1.jpg');
+    background-size: cover;
+    background-position: center;
+}
+h1{
+    margin-left: 15px;
+}
+
+
+/*
+*
+* 
+* Header Area
+*
+*
+*/
+.container{
+    padding: 0 20px;
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 1500px;
+    margin: auto;
+}
+.main-section{ 
+    display:flex;
+    margin-top: 95px;
+    max-width: 1500px;
+}
+
+.logo {
+    width: 105px;
+    height: auto;
+}
+.logo img{
+    width: 100%;
+    height: 100%;
 }
 .models {
     display:none;
 }
 
-header {
-    position: fixed;
+.title{
+    font-size: 26px;
+    color: #fff;
+    margin-left: 30px;
+}
+
+.top-bar {
+    position: absolute;
     left:0;
-    top:0;
+    top:200px;
     right:0;
     height:60px;
-    background-color:#399ade;
+    background-color:#ffc736;
     display:none;
     justify-content: flex-end;
     align-items: center;
@@ -27,7 +86,7 @@ header {
 .menu-openner {
     margin-right: 15px;
     font-size: 26px;
-    background-color: #a9dcff;
+    background-color: #f3f1f1;
     padding: 5px 20px;
     border-radius: 5px;
 }
@@ -40,20 +99,35 @@ header {
     display:none;
     font-size: 30px;
 }
-
-aside {
-    background-color: pink;/*#9ccbe6;*/
+/*
+*
+* 
+* Aside Area
+*
+*
+*/
+aside{
+    background-color: #ffc736;
     width:0vw;
     font-family:'Hepta Slab', Helvetica, Arial;
     transition:all ease .2s;
     overflow-x:hidden;
 }
-aside.show {
+aside.show{
     width:30vw;
 }
 .cart--area {
     padding:20px;
 }
+
+/*
+*
+* 
+* Main Area
+*
+*
+*/
+
 main {
     flex:1;
     padding:20px;
@@ -61,6 +135,7 @@ main {
 h1 {
     font-family:'Hepta Slab', Helvetica, Arial;
 }
+
 .pizza-area {
     display:grid;
     grid-template-columns: repeat(3, 1fr);
@@ -93,7 +168,7 @@ h1 {
     height:50px;
     line-height:50px;
     border-radius:25px;
-    background-color:#388bc5;
+    background-color:#F44336;
     text-align:center;
     color:#FFF;
     font-size:22px;
@@ -102,7 +177,7 @@ h1 {
     transition:all ease .2s;
 }
 .pizza-item a:hover .pizza-item--add {
-    background-color:#244c88;
+    background-color:#000;
 }
 .pizza-item--price {
     font-size:15px;
@@ -120,6 +195,14 @@ h1 {
     color:#555;
     margin-top:10px;
 }
+
+/*
+*
+* 
+* Modal Area
+*
+*
+*/
 
 .pizzaWindowArea {
     position:fixed;
@@ -168,12 +251,12 @@ h1 {
 }
 .pizzaInfo .pizzaInfo--desc {
     font-size:15px;
-    color:#999;
+    color:#2d2d2d;
     margin-top:10px;
     font-family:'Lato',Helvetica,Arial;
 }
 .pizzaInfo--sector {
-    color:#CCC;
+    color:#2d2d2d;
     text-transform: uppercase;
     font-size:14px;
     margin-top:30px;
@@ -196,7 +279,7 @@ h1 {
     background-color:#CCC;
 }
 .pizzaInfo--size.selected {
-    background-color:#399ade;
+    background-color:#fb2e1e;
     color:#FFF;
 }
 .pizzaInfo--size.selected span {
@@ -241,18 +324,23 @@ h1 {
     margin-top:30px;
     padding:20px 30px;
     border-radius:20px;
-    background-color:#48d05f;
+    background-color: #fb2e1e;
+    border: solid 1px #fb2e1e;
     color:#FFF;
     display:inline-block;
     cursor:pointer;
     margin-right:30px;
 }
-.pizzaInfo--addButton:hover {
-    background-color:#32a345;
+.pizzaInfo--addButton:active {
+    background-color: #000000;
+    
 }
 .pizzaInfo--cancelButton {
     display:inline-block;
     cursor:pointer;
+}
+.pizzaInfo--cancelButton:active {
+    color: #fb2e1e;
 }
 .pizzaInfo--cancelMobileButton {
     display:none;
@@ -261,6 +349,15 @@ h1 {
     line-height: 40px;
     margin-bottom:30px;
 }
+
+/*
+*
+* 
+* Cart Area
+*
+*
+*/
+
 .cart {
     margin-bottom:20px;
 }
@@ -301,8 +398,8 @@ h1 {
 }
 .cart--totalitem {
     padding:15px 0;
-    border-top:1px solid #79b9dd;
-    color:#315970;
+    border-top:1px solid #fb2e1e;
+    color:#000121;;
     display:flex;
     justify-content: space-between;
     font-size:15px;
@@ -318,16 +415,19 @@ h1 {
 .cart--finalizar {
     padding:20px 30px;
     border-radius:20px;
-    background-color:#48d05f;
+    background-color:#fb2e1e;
+    border:2px solid #fb2e1e;
     color:#FFF;
     cursor:pointer;
     text-align:center;
     margin-top:20px;
-    border:2px solid #63f77c;
+    font-size: 16px;
+    font-weight: 600;
     transition: all ease .2s;
 }
 .cart--finalizar:hover {
-    background-color:#35af4a;
+    background-color:#000;
+    
 }
 
 @media (max-width:1000px) {
@@ -336,6 +436,13 @@ h1 {
     }
 }
 
+/*
+*
+* 
+* Smartphone/Tablet screen
+*
+*
+*/
 @media (max-width:840px) {
     body {
         flex-direction: column;
@@ -346,7 +453,7 @@ h1 {
     .pizza-item {
         max-width:100%;
     }
-    header {
+    .top-bar {
         display:flex;
     }
     main {
