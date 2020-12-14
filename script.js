@@ -220,9 +220,10 @@ Modal Events and methods
 
 s('.purchaseSuccessModal').addEventListener('click', (e)=>{
 	e.target.style.display = 'none';
+	document.body.style.overflowY = 'auto'; 
 });
 
-s('.cart--finalizar').addEventListener('click', ()=>{
+s('.cart--finalize').addEventListener('click', ()=>{
 		finalizePurchase();
 });
 
@@ -230,6 +231,7 @@ function finalizePurchase(){
 	cart = [];
 	updateCart();
 	s('.purchaseSuccessModal').style.display = 'flex';
+	document.body.style.overflowY = 'hidden'; 
 }
 
 function updateCart(){

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Hepta+Slab:400,700|Lato:400,700&display=swap');
 /*
 *
 * 
@@ -161,7 +162,7 @@ main {
 }
 .menu-title {
     font-family:'Hepta Slab', Helvetica, Arial;
-    margin-bottom: 60px;
+    margin-bottom: 85px;
     text-align: center;
     font-size: 35px;
     font-weight: 600;
@@ -169,6 +170,11 @@ main {
 
 .menu-title::after{
     content: '';
+    background-color: var(--primary-red);
+    height: 2px;
+    width: 147px;
+    position: absolute;
+    transform: translate(-180px, 60px);
 }
 
 .pizza-area {
@@ -479,7 +485,7 @@ main {
     color:#000;
     font-weight: bold;
 }
-.cart--finalizar {
+.cart--finalize {
     padding:20px 30px;
     border-radius:20px;
     background-color:#fb2e1e;
@@ -492,7 +498,7 @@ main {
     font-weight: 600;
     transition: all ease .2s;
 }
-.cart--finalizar:hover {
+.cart--finalize:hover {
     background-color:#000;
     
 }
