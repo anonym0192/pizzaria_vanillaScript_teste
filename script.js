@@ -182,6 +182,13 @@ s('.menu-closer').addEventListener('click', ()=>{
 });
 
 
+s('.purchaseSuccessModal').addEventListener('click', (e)=>{
+	s('.purchaseSuccessModal').style.display = 'none';
+	document.body.style.overflowY = 'auto'; 
+});
+
+
+
 function closeModal(){
 	const modal = s('.pizzaWindowArea');
 	modal.style.opacity = 0;
@@ -214,24 +221,20 @@ function resetModalItems(){
 
 /*
 *
-Modal Events and methods
+Cart Events and methods
 *
 */
 
-s('.purchaseSuccessModal').addEventListener('click', (e)=>{
-	e.target.style.display = 'none';
-	document.body.style.overflowY = 'auto'; 
-});
 
 s('.cart--finalize').addEventListener('click', ()=>{
+		s('.purchaseSuccessModal').style.display = 'flex';
+		document.body.style.overflowY = 'hidden'; 
 		finalizePurchase();
 });
 
 function finalizePurchase(){
 	cart = [];
-	updateCart();
-	s('.purchaseSuccessModal').style.display = 'flex';
-	document.body.style.overflowY = 'hidden'; 
+	updateCart();	
 }
 
 function updateCart(){
