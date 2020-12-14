@@ -214,7 +214,7 @@ function resetModalItems(){
 
 /*
 *
-Modal Events and methods
+Cart Events and methods
 *
 */
 
