@@ -28,7 +28,9 @@ let pizzaJson = [
     description:'Molho, mussarela, tomates em rodelas, parmesão, azeitonas e orégano.', sizes: ['BROTO','PEQUENA','MÉDIA','GRANDE']},
     
     {id:7, name:'Calabresa', img:'images/calabresa.png',price:{broto: 24.90, pequena: 35.90, media: 46.90, grande: 57.90}, 
-    description:'Molho, mussarela, presunto, calabresa, ovos, cebola, azeitonas e orégano.', sizes: ['BROTO','PEQUENA','MÉDIA','GRANDE']}
+    description:'Molho, mussarela, presunto, calabresa, ovos, cebola, azeitonas e orégano.', sizes: ['BROTO','PEQUENA','MÉDIA','GRANDE']},
+
+    
 ];
 
 
